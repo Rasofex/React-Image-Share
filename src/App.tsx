@@ -7,6 +7,7 @@ import ImageKit from 'imagekit'
 import { Loader2 } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { useToast } from '@/components/ui/use-toast'
+import { TranslatedNameRU } from '@/utils/translatedNameRU'
 
 function App() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -26,45 +27,7 @@ function App() {
   }
 
   const translatedName = (name: string) => {
-    name = name
-      .replace('а', 'a')
-      .replace('б', 'b')
-      .replace('в', 'v')
-      .replace('г', 'g')
-      .replace('д', 'd')
-      .replace('е', 'e')
-      .replace('ё', 'e')
-      .replace('ж', 'zh')
-      .replace('з', 'z')
-      .replace('и', 'i')
-      .replace('й', 'y')
-      .replace('к', 'k')
-      .replace('л', 'l')
-      .replace('м', 'm')
-      .replace('н', 'n')
-      .replace('о', 'o')
-      .replace('п', 'p')
-      .replace('р', 'r')
-      .replace('с', 's')
-      .replace('т', 't')
-      .replace('у', 'u')
-      .replace('ф', 'f')
-      .replace('х', 'h')
-      .replace('ц', 'c')
-      .replace('ч', 'ch')
-      .replace('ш', 'sh')
-      .replace('щ', 'sch')
-      .replace('ь', '')
-      .replace('ъ', '')
-      .replace('ы', 'y')
-      .replace('э', 'e')
-      .replace('ю', 'yu')
-      .replace('я', 'ya')
-      .replace(' ', '')
-      .replace('_', '-')
-      .replace('(', '')
-      .replace(')', '')
-    return name
+    return new TranslatedNameRU(name).name
   }
 
   const handleUpload = async () => {
@@ -103,7 +66,7 @@ function App() {
   }
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(urlClipboard).then((r) => console.log(r))
+    navigator.clipboard.writeText(urlClipboard).then()
     toast({
       title: 'Copied to clipboard',
       description: 'Link copied to clipboard',
