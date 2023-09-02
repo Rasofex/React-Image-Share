@@ -32,6 +32,15 @@ export function AppService() {
 
   const handleUpload = async () => {
     if (selectedFile) {
+      if (selectedFile.size > 5 * 1024 * 1024) {
+        toast({
+          variant: 'destructive',
+          title: 'File too large!',
+          description: 'File is more than 5MB!',
+          duration: 5000,
+        })
+        return
+      }
       setUploading(true)
       setUploaded(undefined)
       imagekit.upload(
@@ -54,8 +63,9 @@ export function AppService() {
             setUploading(false)
             setUploaded(imageUrl)
             toast({
+              variant: 'default',
               title: 'Image uploaded',
-              description: imageUrl,
+              description: 'Your image has been uploaded. Click to copy link.',
               duration: 5000,
             })
             setUrlClipboard(imageUrl)

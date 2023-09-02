@@ -2,9 +2,10 @@ import _header from '@/components/_header.tsx'
 import { Input } from '@/components/ui/input.tsx'
 import { Label } from '@/components/ui/label.tsx'
 import { Button } from '@/components/ui/button.tsx'
-import { Loader2 } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card.tsx'
 import { AppService } from '@/pages/app.service.ts'
+import UseAnimations from 'react-useanimations'
+import loading from 'react-useanimations/lib/loading'
 
 function App() {
   const {
@@ -44,7 +45,7 @@ function App() {
             disabled={uploading}
             onClick={handleUpload}
           >
-            {uploading ? <Loader2 /> : 'Upload'}
+            {uploading ? <UseAnimations animation={loading} /> : 'Upload'}
           </Button>
         </div>
         <div
