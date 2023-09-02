@@ -1,27 +1,35 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+# 🖼️ Image Uploader App
+This is a simple React app that allows users to upload images and get a shareable link.
+### 📸 Features
+- 📷 Upload JPG, PNG, GIF (max 5MB)
+- 🔗 Get shareable link
+- ✂️ Automatically crop and resize image
+- 📋 Copy link to clipboard
+### 🛠 Installation and usage
+Install dependencies:
+```shell
+yarn install
+```
+Start development server:
+```shell
+yarn dev
+```
+Build for production:
+```shell
+yarn build
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 🚀 Quick Start
+- 📁 Select an image file to upload
+- 🗳 Click "Upload" button
+- 🔗 Image will be uploaded, and you will get a shareable link
+- 📋 Click "Copy Link" button to copy link to clipboard
+- 🖼️ Share an image link with anyone!
+
+### 💻 Tech Stack
+- [React](https://react.dev/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [ImageKit](https://imagekit.io/)
+
+### 🤝 Contributing
+Contributions are welcome! Please open an issue or PR.
