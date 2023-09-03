@@ -26,4 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm dev
+    - run: cd /
+    - run: npm i yarn
+    - run: yarn dev
