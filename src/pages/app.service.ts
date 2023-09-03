@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from 'react'
 import ImageKit from 'imagekit'
 
-import { TranslatedName } from '@/utils/translatedName.ts'
 import { useToast } from '@/components/ui/use-toast.ts'
+import { TranslatedName } from '@/utils/translatedName.ts'
+import { copyLink } from '@/utils/handleCopyLink.tsx'
 
 export function AppService() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -26,8 +27,8 @@ export function AppService() {
     }
   }
 
-  const translatedName = (name: string) => {
-    return new TranslatedName(name).name
+  const translatedName = (name: string): string => {
+    return TranslatedName(name)
   }
 
   const handleUpload = async () => {
@@ -35,8 +36,8 @@ export function AppService() {
       if (selectedFile.size > 5 * 1024 * 1024) {
         toast({
           variant: 'destructive',
-          title: 'File too large!',
-          description: 'File is more than 5MB!',
+          title: 'Файл слишком большой!',
+          description: 'Вес файла превышает 5 МБ!',
           duration: 5000,
         })
         return
@@ -64,8 +65,9 @@ export function AppService() {
             setUploaded(imageUrl)
             toast({
               variant: 'default',
-              title: 'Image uploaded',
-              description: 'Your image has been uploaded. Click to copy link.',
+              title: 'Изображение загружено',
+              description:
+                'Ваше изображение загружено. Вы можете скопировать ссылку.',
               duration: 5000,
             })
             setUrlClipboard(imageUrl)
@@ -76,14 +78,8 @@ export function AppService() {
   }
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(urlClipboard).then()
-    toast({
-      title: 'Copied to clipboard',
-      description: 'Link copied to clipboard',
-      duration: 5000,
-    })
+    copyLink(urlClipboard)
   }
-
   const resetAll = () => {
     setSelectedFile(null)
     setUploading(false)

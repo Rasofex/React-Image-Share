@@ -20,10 +20,10 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col dark:bg-zinc-950">
       <_header />
-      <main className="container flex-col flex-1 flex items-center justify-center">
+      <main className="container flex-col flex-1 flex items-center justify-center pb-6">
         <Card hidden={!uploaded}>
           <CardContent className="pt-6">
-            <img src={uploaded} alt="" />
+            <img className={'rounded-lg shadow-md'} src={uploaded} alt="" />
           </CardContent>
         </Card>
         <div
@@ -45,7 +45,7 @@ function App() {
             disabled={uploading}
             onClick={handleUpload}
           >
-            {uploading ? <UseAnimations animation={loading} /> : 'Upload'}
+            {uploading ? <UseAnimations animation={loading} /> : 'Загрузить'}
           </Button>
         </div>
         <div
@@ -54,9 +54,9 @@ function App() {
             (!uploaded ? ' hidden' : '')
           }
         >
-          <Button onClick={handleCopyLink}>Copy Link</Button>
+          <Button onClick={handleCopyLink}>Копировать ссылку</Button>
           <Button className={'mt-1'} variant="outline" onClick={resetAll}>
-            Upload new image
+            Загрузить новое изображение
           </Button>
         </div>
       </main>
